@@ -6,44 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Explore Recipes - My World Recipe Archive</title>
-
     <link rel="stylesheet" href="static/css/style.css">
+
 </head>
 
-<body>
-
+<body class="recipes-page">
     <!-- Navigation -->
-    <header class="navbar">
-		<a href="index.html" class="nav-brand">
-			<span class="nav-icon">📖</span>
-			<span id="navBrand">Recipe Archive</span>
-		</a>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <span class="nav-icon">📖</span>
+            <span id="navBrand">Recipe Archive</span>
+        </a>
 
-            <!-- 2. Center: Dynamic Links (Only shows current language) -->
-            <div class="nav-links">
-                <a href="index.html" id="navHome">Home</a>
-                <a href="#recipesHeading" id="navRecipes">Recipes</a>
-                <!--a href="#categories">Categories</a-->
-                <a href="index.html#featuredHeading" id="navFeatured">Featured</a>
-                <a href="index.html#about" id="navAbout">About</a>
-                <a href="feedback.html" id="navFeedback">Feedback</a>
-            </div>
+        <!-- 2. Center: Dynamic Links (Only shows current language) -->
+        <div class="nav-links">
+            <a href="index.html" id="navHome">Home</a>
+            <a href="#recipesHeading" id="navRecipes">Recipes</a>
+            <!--<a href="#categories">Categories</a>-->
+            <a href="index.html#featuredHeading" id="navFeatured">Featured</a>
+            <a href="index.html#about" id="navAbout">About</a>
+            <a href="feedback.html" id="navFeedback">Feedback</a>
+        </div>
 
-            <!-- Language Buttons -->
-            <div class="nav-lang">
-                <button class="lang-btn" id="btn-en" onclick="changeRecipeLanguage('en')">
-                    EN
-                </button>
+        <!-- Language Buttons -->
+        <div class="nav-lang">
+            <button class="lang-btn" id="btn-en" onclick="changeRecipeLanguage('en')">
+                EN
+            </button>
 
-                <button class="lang-btn" id="btn-fr" onclick="changeRecipeLanguage('fr')">
-                    FR
-                </button>
+            <button class="lang-btn" id="btn-fr" onclick="changeRecipeLanguage('fr')">
+                FR
+            </button>
 
-                <button class="lang-btn" id="btn-zh" onclick="changeRecipeLanguage('zh')">
-                    中文
-                </button>
-            </div>
-    </header>
+            <button class="lang-btn" id="btn-zh" onclick="changeRecipeLanguage('zh')">
+                中文
+            </button>
+        </div>
+    </nav>
 
 
     <!-- Page Header -->
