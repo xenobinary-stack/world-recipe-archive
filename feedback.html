@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feedback - My World Recipe Archive</title>
+
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" id="backHomeLink">← Home / Accueil / 首页</a>
+
+        <!-- Language Switcher -->
+        <span>
+            <a href="#" onclick="changeLanguage('en'); return false;">EN</a>
+            <a href="#" onclick="changeLanguage('fr'); return false;">FR</a>
+            <a href="#" onclick="changeLanguage('zh'); return false;">中文</a>
+        </span>
+    </nav>
+
+
+    <!-- Feedback Section -->
+    <main>
+
+        <section class="page-header">
+            <div class="container">
+                <h1 id="feedbackHeading">Feedback</h1>
+
+                <p id="feedbackIntro">
+                    We would love to hear your thoughts about My World Recipe Archive.
+                </p>
+            </div>
+        </section>
+
+
+        <section class="feedback-section">
+            <div class="container">
+
+                <div class="feedback-card">
+                    <form class="feedback-form" id="feedbackForm">
+                        <div class="form-row"> <label for="firstName" id="firstNameLabel">First Name:</label> <input
+                                type="text" id="firstName" name="firstName"> </div>
+
+                        <div class="form-row">
+                            <label for="lastName" id="lastNameLabel">Last Name:</label>
+                            <input type="text" id="lastName" name="lastName">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="userId" id="userIdLabel">User ID:</label>
+                            <input type="text" id="userId" name="userId">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="password" id="passwordLabel">Password:</label>
+                            <input type="password" id="password" name="password">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="comment" id="commentLabel">Comment:</label>
+                            <textarea id="comment" name="comment" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" id="submitButton">Submit</button>
+                        <p id="feedbackMessage"></p>
+
+                    </form>
+                </div>
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>
+                &copy; 2026 My World Recipe Archive
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- Feedback JavaScript -->
+    <script src="static/js/feedback.js"></script>
+</body>
+
+</html>

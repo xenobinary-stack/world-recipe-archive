@@ -1,0 +1,30 @@
+现在的课程要求做一个网站，以下是学校的要求。我想做一个有关菜谱的网站，多国美食，包括菜谱照片等等，是否提一些建议。
+
+
+
+
+
+
+
+
+The website must contain the following:
+
+       Bilingual French/English website.                   
+
+A menu system                  
+Colors                  
+Images                  
+Image with a link defined to it.                  
+Video inserted                  
+External links                  
+Design and creativity                  
+No error messages                  
+Functionality                  
+Do not copy large blocks of code from the internet.                   
+Forms and Input ( First Name, Last Name, User ID, Password, Comment and a submit button)                 
+Scripts (any simple JavaScript)                  
+Comments must be included in your HTML code.                  
+Tables                  
+Headings                  
+Lists                  
+Paragraphs

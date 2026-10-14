@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explore Recipes - My World Recipe Archive</title>
+
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+		<a href="index.html" class="nav-brand">
+			<span class="nav-icon">📖</span>
+			<span id="navBrand">Recipe Archive</span>
+		</a>
+
+            <!-- 2. Center: Dynamic Links (Only shows current language) -->
+            <div class="nav-links">
+                <a href="index.html" id="navHome">Home</a>
+                <a href="#recipesHeading" id="navRecipes">Recipes</a>
+                <!--a href="#categories">Categories</a-->
+                <a href="index.html#featuredHeading" id="navFeatured">Featured</a>
+                <a href="index.html#about" id="navAbout">About</a>
+                <a href="feedback.html" id="navFeedback">Feedback</a>
+            </div>
+
+            <!-- Language Buttons -->
+            <div class="nav-lang">
+                <button class="lang-btn" id="btn-en" onclick="changeRecipeLanguage('en')">
+                    EN
+                </button>
+
+                <button class="lang-btn" id="btn-fr" onclick="changeRecipeLanguage('fr')">
+                    FR
+                </button>
+
+                <button class="lang-btn" id="btn-zh" onclick="changeRecipeLanguage('zh')">
+                    中文
+                </button>
+            </div>
+    </header>
+
+
+    <!-- Page Header -->
+    <main>
+
+        <section class="page-header">
+            <div class="container">
+
+                <h1 id="recipesHeading">
+                    Explore Recipes
+                </h1>
+
+                <p id="recipesIntro">
+                    Discover recipes from around the world.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- Filters -->
+        <section class="recipe-list-section">
+            <div class="container">
+
+                <div class="filter-bar">
+
+                    <input type="text" id="searchInput" placeholder="Search recipes...">
+
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                    </select>
+
+                    <select id="countryFilter">
+                        <option value="">All Countries</option>
+                    </select>
+
+                    <select id="difficultyFilter">
+                        <option value="">All Difficulties</option>
+                    </select>
+
+                </div>
+
+
+                <!-- Recipe Cards -->
+                <div id="recipeGrid" class="recipe-grid">
+                </div>
+
+
+                <!-- No Results -->
+                <p id="noResults" class="no-results" style="display: none;">
+                    No recipes found.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>
+                &copy; 2026 My World Recipe Archive
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="static/js/recipes.js"></script>
+
+</body>
+
+</html>

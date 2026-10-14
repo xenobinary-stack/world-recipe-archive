@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>My World Recipe Archive</title>
+	<link rel="stylesheet" href="static/css/style.css">
+
+</head>
+
+<body>
+	<nav class="navbar">
+		<!-- 1. Left: Brand / Logo -->
+		<a href="index.html" class="nav-brand">
+			<span class="nav-icon">📖</span>
+			<span id="navBrand">Recipe Archive</span>
+		</a>
+		<!-- 2. Center: Dynamic Links (Only shows current language) -->
+		<div class="nav-links">
+			<a href="index.html" id="navHome">Home</a>
+			<a href="recipes.html" id="navRecipes">Recipes</a>
+			<!--a href="#categories">Categories</a-->
+			<a href="#featuredHeading" id="navFeatured">Featured</a>
+			<a href="#about" id="navAbout">About</a>
+			<a href="feedback.html" id="navFeedback">Feedback</a>
+		</div>
+		<!-- 3. Right: Sleek Language Pill Switcher -->
+		<div class="nav-lang">
+			<button class="lang-btn" id="btn-en" onclick="changeLanguage('en',false)">EN</button>
+			<button class="lang-btn" id="btn-fr" onclick="changeLanguage('fr',false)">FR</button>
+			<button class="lang-btn" id="btn-zh" onclick="changeLanguage('zh',false)">中文</button>
+		</div>
+	</nav>
+
+	<main>
+		<h1 id="mainTitle">My World Recipe Archive</h1>
+		<p id="welcomeText">Welcome to my personal collection of recipes from around the world.</p>
+		<!-- NEW: Featured Recipe Card -->
+		<div class="featured-hero">
+			<a href="recipe.html?id=2">
+				<img width="480" height="320" src="../images/recipes/tiramisu/tiramisu_main.jpg"
+					alt="Featured Recipe: Tiramisu">
+				<p class="hero-caption" id="heroCaption">✨ Featured Recipe: Classic Italian Tiramisu</p>
+			</a>
+			<!-- <a href="recipe.html?id=3">
+        <img width="600" height="320" src="images/recipes/baguette/baguette_main.jpg" alt="Featured Recipe: Baguette">
+        <p class="hero-caption" id="heroCaption">✨ Featured Recipe: Classic French Baguette</p>
+    </a> -->
+		</div>
+ <!-- Featured Table -->
+        <section class="section-featured">
+            <h2 id="featuredHeading">Featured Recipes</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th id="recipeColumn">Recipe</th>
+                            <th id="countryColumn">Country</th>
+                            <th id="categoryColumn">Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="recipe.html?id=1" class="recipe-name-link">Pizza Margherita</a></td>
+                            <td><span class="badge badge-country">🇮🇹 Italy</span></td>
+                            <td><span class="badge badge-category">Main Dish</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="recipe.html?id=2" class="recipe-name-link">Tiramisu</a></td>
+                            <td><span class="badge badge-country">🇮🇹 Italy</span></td>
+                            <td><span class="badge badge-category">Dessert</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+		<section class="categories-section">
+			<h2 id="recipesHeading">Explore by Category</h2>
+
+			<div class="category-grid">
+
+				<a href="recipes.html?category=dessert" class="category-card">
+					<span class="category-icon">🍰</span>
+					<h3 id="dessertsHeading">Dessert</h3>
+				</a>
+
+
+				<a href="recipes.html?category=bread" class="category-card">
+					<span class="category-icon">🥖</span>
+					<h3 id="breadsPastries">Bread&Pastry</h3>
+				</a>
+
+				<a href="recipes.html?category=soup" class="category-card">
+					<span class="category-icon">🍲</span>
+					<h3 id="soups">Soup</h3>
+				</a>
+
+
+				<a href="recipes.html?category=main_dish" class="category-card">
+					<span class="category-icon">🍽️</span>
+					<h3 id="mainDishes">Main Dish</h3>
+				</a>
+
+			</div>
+
+		</section>
+
+		<h2 id="videoHeading">Recipe Video</h2>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/aiR8uFyxwzE?si=MSE4e_Dgil_VAJuO"
+			title="YouTube video player" frameborder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		<section id="about">
+			<h2 id="aboutHeading">About My Recipe Archive</h2>
+			<p id="aboutText">This website is my personal collection of recipes from different countries and cultures. I
+				enjoy exploring desserts, main dishes, breads, and pastries from around the world.</p>
+		</section>
+		<!-- Feedback Section hidden now-->
+		<div id="FeedbackSection" style="display: none;">
+			<section class="page-header">
+				<div class="container">
+					<h1 id="feedbackHeading">Feedback</h1>
+
+					<p id="feedbackIntro">
+						We would love to hear your thoughts about My World Recipe Archive.
+					</p>
+				</div>
+			</section>
+
+
+			<section class="feedback-section">
+				<div class="container">
+
+					<div class="feedback-card">
+						<form class="feedback-form" id="feedbackForm">
+							<div class="form-row"> <label for="firstName" id="firstNameLabel">First Name:</label> <input
+									type="text" id="firstName" name="firstName"> </div>
+
+							<div class="form-row">
+								<label for="lastName" id="lastNameLabel">Last Name:</label>
+								<input type="text" id="lastName" name="lastName">
+							</div>
+
+							<div class="form-row">
+								<label for="userId" id="userIdLabel">User ID:</label>
+								<input type="text" id="userId" name="userId">
+							</div>
+
+							<div class="form-row">
+								<label for="password" id="passwordLabel">Password:</label>
+								<input type="password" id="password" name="password">
+							</div>
+
+							<div class="form-row">
+								<label for="comment" id="commentLabel">Comment:</label>
+								<textarea id="comment" name="comment" rows="4"></textarea>
+							</div>
+
+							<button type="submit" id="submitButton">Submit</button>
+							<p id="feedbackMessage"></p>
+
+						</form>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- Useful Cooking Resources -->
+		<section id="externalLinks" class="resources-section">
+			<h2 id="externalLinkHeading">Useful Cooking Resources</h2>
+			<p id="externalLinkInfo">Explore more recipes and cooking tips from these trusted websites:</p>
+			<div class="resources-grid">
+				<a href="https://www.allrecipes.com/" target="_blank" rel="noopener noreferrer" class="resource-pill"
+					id="externalLink1">
+					<span class="link-icon">🌐</span> Allrecipes — 60M Home Cooks
+				</a>
+				<a href="https://japan-food.jetro.go.jp/en/recipe/" target="_blank" rel="noopener noreferrer"
+					class="resource-pill" id="externalLink2">
+					<span class="link-icon">🍱</span> Taste of Japan — Authentic Recipes
+				</a>
+				<a href="https://www.canada.ca/en/health-canada/services/food-guide.html" target="_blank"
+					rel="noopener noreferrer" class="resource-pill" id="externalLink3">
+					<span class="link-icon">🥗</span> Canada's Food Guide — Nutrition
+				</a>
+			</div>
+		</section>
+	</main>
+
+	<script src="static/js/script.js"></script>
+
+</body>
+
+</html>

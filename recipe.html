@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Recipe Details - My World Recipe Archive</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" id="backHomeLink">← Home / Accueil / 首页</a>
+
+        <!-- Language Switcher -->
+        <span>
+            <a href="#" onclick="changeLanguage('en'); return false;">EN</a>
+            <a href="#" onclick="changeLanguage('fr'); return false;">FR</a>
+            <a href="#" onclick="changeLanguage('zh'); return false;">中文</a>
+        </span>
+    </nav>
+
+    <main class="recipe-container">
+        <!-- Recipe Header -->
+        <h1 id="recipeTitle">Loading recipe...</h1>
+        <p class="recipe-tags">
+            <span id="recipeCountry"></span>
+            <span id="recipeCategory"></span>
+            <span id="recipeDifficulty"></span>
+        </p>
+
+        <p id="recipeDescription" class="recipe-desc"></p>
+
+        <!-- Optional Recipe Photo -->
+        <div id="photoContainer">
+            <img id="recipePhoto" src="images/dessert.jpg" alt="Recipe photo" width="500">
+        </div>
+
+        <!-- Quick Info Box -->
+        <div class="recipe-info-bar">
+            <div class="info-item">
+                <strong id="labelPrep">Prep Time:</strong>
+                <span id="prepTime">—</span>
+            </div>
+            <div class="info-item">
+                <strong id="labelCook">Cook/Chill Time:</strong>
+                <span id="cookTime">—</span>
+            </div>
+            <div class="info-item">
+                <strong id="labelServings">Servings:</strong>
+                <span id="servings">—</span>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Ingredients Section -->
+        <section class="ingredients-section">
+            <h2 id="ingredientsHeading">Ingredients</h2>
+            <ul id="ingredientsList">
+                <li>Loading ingredients...</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <!-- Preparation Steps Section -->
+        <section class="steps-section">
+            <h2 id="stepsHeading">Preparation Steps</h2>
+            <ol id="stepsList">
+                <li>Loading steps...</li>
+            </ol>
+        </section>
+
+        <!-- Recipe Notes Section (if available) -->
+        <section id="notesSection" style="display: none;">
+            <hr>
+            <h2 id="notesHeading">Chef's Notes & Tips</h2>
+            <p id="recipeNotes"></p>
+        </section>
+    </main>
+
+    <script src="static/js/recipe.js"></script>
+</body>
+
+</html>
