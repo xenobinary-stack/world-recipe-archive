@@ -770,3 +770,42 @@ hr {
     }
 
 }
+
+/* Mobile navigation for the recipe list page */
+@media (max-width: 768px) {
+
+    .recipes-page .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 12px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .recipes-page .nav-brand {
+        text-align: center;
+    }
+
+    .recipes-page .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 12px 16px;
+        width: 100%;
+    }
+
+    .recipes-page .nav-links a {
+        white-space: nowrap;
+        font-size: 14px;
+    }
+
+    .recipes-page .nav-lang {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+
+}
