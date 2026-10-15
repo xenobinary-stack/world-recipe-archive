@@ -1,9 +1,18 @@
-from flask import Flask, jsonify, request, send_from_directory
+from flask import (
+    Flask, jsonify, request, send_from_directory,
+    session, redirect
+)
 import sqlite3
 import os
 
+from werkzeug.security import check_password_hash
+
 # Create Flask app serving files directly from the current directory
 app = Flask(__name__, static_folder='.', static_url_path='')
+
+# Secret key for Flask sessions
+# For local development, a new key is generated each time Flask starts.
+app.secret_key = os.urandom(32)
 
 # SQLite database file path，absolute path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -20,6 +29,52 @@ def get_db():
 
 # Homepage: http://127.0.0.1:5000/
 @app.route('/')
+# -------------------------------------------------------------
+# Login and Logout
+# -------------------------------------------------------------
+
+@app.route('/login.html')
+def login_page():
+    # Already logged in? Go to the import page.
+    if session.get('admin_id'):
+        return redirect('/import.html')
+
+    return send_from_directory('.', 'login.html')
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username', '').strip()
+    password = request.form.get('password', '')
+
+    db = get_db()
+
+    admin = db.execute('''
+        SELECT admin_id, username, password_hash
+        FROM admin_users
+        WHERE username = ?
+    ''', (username,)).fetchone()
+
+    db.close()
+
+    # Check the submitted password against the stored hash.
+    if admin and check_password_hash(
+        admin['password_hash'], password
+    ):
+        session.clear()
+        session['admin_id'] = admin['admin_id']
+        session['admin_username'] = admin['username']
+
+        return redirect('/import.html')
+
+    # Do not reveal whether the username or password was incorrect.
+    return redirect('/login.html?error=1')
+
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.clear()
+    return redirect('/login.html')
 
 def index_page():
     return send_from_directory('.', 'index.html')
@@ -33,6 +88,16 @@ def recipe_page():
 @app.route('/recipes.html')
 def recipes_page():
     return send_from_directory('.', 'recipes.html')
+
+#Import page : http://127.0.0.1:5000/import.html
+@app.route('/import.html')
+def import_page():
+    if not session.get('admin_id'):
+        return redirect('/login.html')
+
+    return send_from_directory('.', 'import.html')
+
+
 
 # -------------------------------------------------------------
 # 2. API Routes (Data from SQLite)

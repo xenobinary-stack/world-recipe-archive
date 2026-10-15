@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - My World Recipe Archive</title>
+
+    <!-- Reuse the existing stylesheet -->
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+    <!-- Website navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <span class="nav-icon">📖</span>
+            <span>Recipe Archive</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="recipes.html">Explore Recipes</a>
+        </div>
+    </nav>
+
+    <!-- Administrator login form -->
+    <main class="recipe-list-section">
+        <div class="container">
+
+            <div class="import-card">
+                <h1>Administrator Login</h1>
+                <p>Log in to manage recipe imports.</p>
+
+                <p id="loginMessage"
+                   role="alert"
+                   aria-live="polite"></p>
+
+                <form action="/login" method="POST">
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            autocomplete="username"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            autocomplete="current-password"
+                            required>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        Log In
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Display a message when login fails -->
+    <script src="static/js/login.js"></script>
+
+</body>
+</html>

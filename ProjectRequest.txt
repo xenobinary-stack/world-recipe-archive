@@ -1,15 +1,4 @@
-现在的课程要求做一个网站，以下是学校的要求。我想做一个有关菜谱的网站，多国美食，包括菜谱照片等等，是否提一些建议。
-
-
-
-
-
-
-
-
-The website must contain the following:
-
-       Bilingual French/English website.                   
+The website must contain the following:Bilingual French/English website.                   
 
 A menu system                  
 Colors                  
@@ -21,10 +10,28 @@ Design and creativity                  
 No error messages                  
 Functionality                  
 Do not copy large blocks of code from the internet.                   
-Forms and Input ( First Name, Last Name, User ID, Password, Comment and a submit button)                 
+Forms and Input ( First Name, Last Name, User ID/Email, Password, Comment and a submit button)                 
 Scripts (any simple JavaScript)                  
 Comments must be included in your HTML code.                  
 Tables                  
 Headings                  
 Lists                  
 Paragraphs
+
+2026-1014
+
+That is a major milestone in my web development journey! Look at what I've accomplished:
+
+Designed a 15-table relational SQLite database with professional multi-language architecture.
+Built a Python Flask backend serving dynamic RESTful JSON APIs.
+Developed a responsive trilingual frontend (EN / FR / 中文) with real-time UI localization, flag badges, category filtering, and image rendering.
+Configured Git version control and pushed your codebase to GitHub.
+Successfully deployed a live production web service with automated CI/CD and free SSL/HTTPS on Render!
+
+https://world-recipe-archive.onrender.com/index.html
+
+
+Create password hash：
+
+& 'C:\Users\binli\AppData\Local\Python\pythoncore-3.14-64\python.exe' -c "from getpass import getpass; from werkzeug.security import generate_password_hash; print(generate_password_hash(getpass('Enter new admin password: '), method='pbkdf2:sha256'))"
+

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Import Recipes - My World Recipe Archive</title>
+
+    <!-- Use the existing website stylesheet -->
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <a href="index.html" class="nav-brand">
+            <span class="nav-icon">📖</span>
+            <span>Recipe Archive</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="recipes.html">Explore Recipes</a>
+         </div>
+        <form action="/logout" method="POST">
+            <button type="submit">Log Out</button>
+        </form>
+    </nav>
+
+
+    <!-- Main import section -->
+    <main>
+
+        <section class="page-header">
+            <div class="container">
+                <h1>Import Recipes</h1>
+
+                <p>
+                    Upload a CSV file to import multiple recipes
+                    into My World Recipe Archive.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- CSV upload form -->
+        <section class="recipe-list-section">
+            <div class="container">
+
+                <div class="import-card">
+
+                    <h2>Step 1: Download the CSV Template</h2>
+
+                    <p>
+                        Download the template and fill in your recipe
+                        information. Keep the original column names.
+                    </p>
+
+                    <!-- The template file will be placed here -->
+                    <a href="static/files/recipe_import_template.csv" download class="btn-primary">
+                        Download CSV Template
+                    </a>
+
+
+                    <hr>
+
+
+                    <h2>Step 2: Select Your CSV File</h2>
+
+                    <form id="csvImportForm" enctype="multipart/form-data">
+
+                        <div class="form-group">
+
+                            <label for="csvFile">
+                                Select CSV File:
+                            </label>
+
+                            <input type="file" id="csvFile" name="file" accept=".csv,text/csv" required>
+
+                        </div>
+
+                        <button type="submit" id="uploadButton" class="btn-primary">
+                            Upload and Import
+                        </button>
+
+                    </form>
+
+
+                    <!-- Display upload and import results -->
+                    <div id="importMessage" role="status" aria-live="polite">
+                    </div>
+
+                    <div id="importResults"></div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 My World Recipe Archive</p>
+        </div>
+    </footer>
+
+
+    <!-- CSV import JavaScript will be added in the next step -->
+    <script src="static/js/import.js"></script>
+
+</body>
+
+</html>

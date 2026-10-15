@@ -94,11 +94,11 @@ function changeLanguage(lang, isAuto = false) {
     const recipesHeading = document.getElementById("recipesHeading");
 
     if (lang === "en") {
-        recipesHeading.textContent = "Explore Recipes";
+        recipesHeading.textContent = "Explore by Category";
     } else if (lang === "fr") {
-        recipesHeading.textContent = "Explorer les recettes";
+        recipesHeading.textContent = "Explorer par catégorie";
     } else if (lang === "zh") {
-        recipesHeading.textContent = "探索食谱";
+        recipesHeading.textContent = "分类探索";
     }
 
     const aboutHeading = document.getElementById("aboutHeading");
@@ -117,7 +117,7 @@ function changeLanguage(lang, isAuto = false) {
     } else if (lang === "fr") {
         aboutText.textContent = "Ce site est ma collection personnelle de recettes de différents pays et cultures. J'aime découvrir des desserts, des plats principaux, des pains et des pâtisseries du monde entier.";
     } else if (lang === "zh") {
-        aboutText.textContent = "这个网站是我个人收藏的食谱集，汇集了不同国家和文化的美食。我喜欢探索世界各地的甜点、主菜、面包和糕点。";
+        aboutText.textContent = "这个网站是我个人收藏的食谱集，汇集了不同国家和文化的美食。我喜欢探索世界各地的甜点、主菜、面包和面点。";
     }
 
     const dessertsHeading = document.getElementById("dessertsHeading");
@@ -155,11 +155,11 @@ function changeLanguage(lang, isAuto = false) {
     const breadsPastries = document.getElementById("breadsPastries");
 
     if (lang === "en") {
-        breadsPastries.textContent = "Breads and Pastries";
+        breadsPastries.textContent = "Breads & Buns";
     } else if (lang === "fr") {
-        breadsPastries.textContent = "Pains et pâtisseries";
+        breadsPastries.textContent = "Pains & Brioches";
     } else if (lang === "zh") {
-        breadsPastries.textContent = "面包和糕点";
+        breadsPastries.textContent = "面包和面点";
     }
 
 

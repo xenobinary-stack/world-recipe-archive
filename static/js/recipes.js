@@ -112,7 +112,7 @@ const categoryNames = {
     zh: {
         dessert: "甜点",
         main_dish: "主菜",
-        bread: "面包",
+        bread: "面包与面点",
         soup: "汤"
     }
 };
