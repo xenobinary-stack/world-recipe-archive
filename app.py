@@ -293,7 +293,20 @@ def submit_feedback():
         print(f"Unexpected Error: {e}")
         return jsonify({"success": False, "message": "An internal server error occurred."}), 500
 
-
+# Get Feedbacks (must login as an administrator)
+@app.route('/api/admin/feedbacks')
+def get_admin_feedbacks():
+    # check admin user
+    if 'admin_id' not in session:
+        return jsonify({'error': 'Unauthorized'}), 401
+    db = get_db()
+    rows = db.execute('''
+        SELECT feedback_id, first_name, last_name, user_id, comment, created_at
+        FROM feedback
+        ORDER BY created_at DESC
+    ''').fetchall()
+    db.close()
+    return jsonify([dict(r) for r in rows])
 # -------------------------------------------------------------
 # 3. Start Server
 # -------------------------------------------------------------
