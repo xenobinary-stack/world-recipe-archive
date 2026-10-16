@@ -4,17 +4,50 @@ let languageWasChosen = false;
 const form = document.getElementById("feedbackForm");
 const message = document.getElementById("feedbackMessage");
 
-form.addEventListener("submit", function (event) {
+
+form.addEventListener("submit", async function (event) {
     event.preventDefault();
-    console.log("test");
-    if (currentLanguage === "en") {
-        message.textContent = "Thank you for your feedback!";
-    } else if (currentLanguage === "fr") {
-        message.textContent = "Merci pour vos commentaires !";
-    } else if (currentLanguage === "zh") {
-        message.textContent = "感谢您的反馈！";
+    //console.log("test");
+    const feedbackData = {
+        firstName: document.getElementById("firstName").value.trim(),
+        lastName: document.getElementById("lastName").value.trim(),
+        userId: document.getElementById("userId").value.trim(),
+        comment: document.getElementById("comment").value.trim()
+    };
+
+    try {
+        const response = await fetch("/api/feedback", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(feedbackData)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            message.textContent = result.message || "Submission failed.";
+            return;
+        }
+
+        if (result.success) {
+            if (currentLanguage === "en") {
+                message.textContent = "Thank you for your feedback!";
+            } else if (currentLanguage === "fr") {
+                message.textContent = "Merci pour vos commentaires !";
+            } else if (currentLanguage === "zh") {
+                message.textContent = "感谢您的反馈！";
+            }
+            form.reset();
+        }
+
+    } catch (error) {
+        console.error("Feedback error:", error);
+        message.textContent = "Unable to submit feedback.";
     }
-    //form.reset();
+
+
 });
 function changeLanguage(lang, isAuto = false) {
 
@@ -36,7 +69,7 @@ function changeLanguage(lang, isAuto = false) {
     } else if (lang === "zh") {
         if (navHome) navHome.textContent = "首页";
     }
-   
+
     // Highlight the active language button
     document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
     const activeBtn = document.getElementById(`btn-${lang}`);
@@ -44,7 +77,7 @@ function changeLanguage(lang, isAuto = false) {
 
     // Translate Backhome 
     const backHomeLinkText = document.getElementById("backHomeLink");
-    
+
     if (lang === "en") {
         backHomeLinkText.textContent = "← Back to Home";
     } else if (lang === "fr") {
@@ -52,8 +85,8 @@ function changeLanguage(lang, isAuto = false) {
     } else if (lang === "zh") {
         backHomeLinkText.textContent = "← 返回首页";
     }
-    
-  
+
+
 
     // Translate Feedback heading
     const feedbackHeading = document.getElementById("feedbackHeading");
