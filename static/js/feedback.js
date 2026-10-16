@@ -37,7 +37,10 @@ function changeLanguage(lang, isAuto = false) {
         if (navHome) navHome.textContent = "首页";
     }
    
-
+    // Highlight the active language button
+    document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+    const activeBtn = document.getElementById(`btn-${lang}`);
+    if (activeBtn) activeBtn.classList.add("active");
 
     // Translate Backhome 
     const backHomeLinkText = document.getElementById("backHomeLink");
@@ -50,6 +53,8 @@ function changeLanguage(lang, isAuto = false) {
         backHomeLinkText.textContent = "← 返回首页";
     }
     
+  
+
     // Translate Feedback heading
     const feedbackHeading = document.getElementById("feedbackHeading");
 

@@ -809,3 +809,56 @@ hr {
     }
 
 }
+
+/* Login form alignment */
+.login-form {
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.login-form-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.login-form-row label {
+    text-align: right;
+}
+
+.login-form-row input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.login-subtitle {
+    max-width: 420px;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+.login-form button[type="submit"] {
+    margin-left: 122px;
+    width: calc(100% - 122px)/2;
+    padding: 12px 16px;
+    font-size: 16px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+/* Mobile layout */
+@media (max-width: 480px) {
+    .login-form-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .login-form-row label {
+        text-align: left;
+    }
+    .login-form button[type="submit"] {
+    margin-left: 0;
+    width: 30%;
+}
+}
+

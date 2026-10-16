@@ -14,9 +14,11 @@
 
         <!-- Language Switcher -->
         <span>
-            <a href="#" onclick="changeLanguage('en'); return false;">EN</a>
-            <a href="#" onclick="changeLanguage('fr'); return false;">FR</a>
-            <a href="#" onclick="changeLanguage('zh'); return false;">中文</a>
+            <div class="nav-lang">
+                <button class="lang-btn" id="btn-en" onclick="changeLanguage('en',false)">EN</button>
+                <button class="lang-btn" id="btn-fr" onclick="changeLanguage('fr',false)">FR</button>
+                <button class="lang-btn" id="btn-zh" onclick="changeLanguage('zh',false)">中文</button>
+            </div>
         </span>
     </nav>
 

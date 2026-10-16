@@ -62,6 +62,11 @@ async function loadRecipeDetails(recipeId, lang) {
         const response = await fetch(`/api/recipe/${recipeId}?lang=${lang}`);
         if (!response.ok) throw new Error("Recipe not found");
 
+        //Highlight the active language button
+        document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+        const activeBtn = document.getElementById(`btn-${lang}`);
+        if (activeBtn) activeBtn.classList.add("active");
+        
         const data = await response.json();
         const t = UI_TEXT[lang] || UI_TEXT["en"];
         // 1. Basic Info
