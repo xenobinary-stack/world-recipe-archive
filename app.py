@@ -29,6 +29,9 @@ def get_db():
 
 # Homepage: http://127.0.0.1:5000/
 @app.route("/")
+def home():
+    return send_from_directory('.', 'index.html')
+
 # -------------------------------------------------------------
 # Login and Logout
 # -------------------------------------------------------------
