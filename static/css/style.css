@@ -288,7 +288,49 @@ iframe {
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); 
 }
+.video-container {
+    max-width: 560px;
+    margin: 20px auto 40px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
 
+.video-placeholder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-thumb {
+    width: 100%;
+    height: 315px;
+    object-fit: cover;
+    display: block;
+}
+
+.play-btn {
+    position: absolute;
+    width: 68px;
+    height: 48px;
+    background-color: rgba(255, 0, 0, 0.9);
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.video-placeholder:hover .play-btn {
+    transform: scale(1.1);
+    background-color: red;
+}
 /* ==========================================================================
    Feedback Form
    ========================================================================== */

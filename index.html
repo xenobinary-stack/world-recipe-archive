@@ -106,10 +106,15 @@
 		</section>
 
 		<h2 id="videoHeading">Recipe Video</h2>
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/aiR8uFyxwzE?si=MSE4e_Dgil_VAJuO"
-			title="YouTube video player" frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		<div class="video-container" id="videoContainer" onclick="loadVideo()">
+			<div class="video-placeholder">
+				<!-- 视频封面图与播放大按钮 -->
+				<img src="https://img.youtube.com/vi/aiR8uFyxwzE/hqdefault.jpg" alt="Video thumbnail"
+					class="video-thumb">
+				<button class="play-btn" aria-label="Play Video">▶</button>
+			</div>
+		</div>
+
 		<section id="about">
 			<h2 id="aboutHeading">About My Recipe Archive</h2>
 			<p id="aboutText">This website is my personal collection of recipes from different countries and cultures. I

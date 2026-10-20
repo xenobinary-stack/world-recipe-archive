@@ -283,6 +283,22 @@ function changeLanguage(lang, isAuto = false) {
         if (externalLink3) externalLink3.innerHTML = '<span class="link-icon">🥗</span> 加拿大膳食指南 — 健康饮食与营养建议';
     }
 }
+//load video 
+function loadVideo() {
+    const container = document.getElementById("videoContainer");
+    
+    // Get the language currently selected by the website user (like 'en', 'fr', 'zh')
+    const lang = currentLanguage || "en";
+    // Append the &hl=${lang} parameter to forcibly set the display language of YouTube's internal interface!
+    container.innerHTML = `
+        <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/aiR8uFyxwzE?autoplay=1&hl=${lang}" 
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
+    `;
+}
 // Function to load recipes from SQLite and make them clickable
 async function loadHomepageRecipes(lang) {
 
@@ -333,5 +349,6 @@ async function loadHomepageRecipes(lang) {
 const initialLanguage = localStorage.getItem("preferred_lang") || "en";
 // Start the page in THAT language
 changeLanguage(initialLanguage, true);
+
 
 
