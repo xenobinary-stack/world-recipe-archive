@@ -320,7 +320,8 @@ async function loadHomepageRecipes(lang) {
             "China": "🇨🇳", "Chine": "🇨🇳", "中国": "🇨🇳",
             "United States": "🇺🇸", "États-Unis": "🇺🇸", "美国": "🇺🇸",
             "Japan": "🇯🇵", "Japon": "🇯🇵", "日本": "🇯🇵",
-            "Canada": "🇨🇦","Canada": "🇨🇦","加拿大": "🇨🇦"
+            "Canada": "🇨🇦","Canada": "🇨🇦","加拿大": "🇨🇦",
+            "International": "🌍","国际": "🌍","国际 / 经典": "🌍"
         };
         // Add dynamic rows from SQLite
         recipes.forEach(recipe => {
