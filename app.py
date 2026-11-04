@@ -310,6 +310,47 @@ def get_admin_feedbacks():
     ''').fetchall()
     db.close()
     return jsonify([dict(r) for r in rows])
+
+# Get Hero recipe + Featured recipes
+@app.route('/api/featured')
+def get_featured_recipes():
+    lang = request.args.get('lang', 'en')
+    db = get_db()
+
+    # 1. Get Hero recipe
+    hero_row = db.execute('''
+        SELECT r.recipe_id, rt.name, rt.description,
+               rp.file_path, pt.caption
+        FROM recipes r
+        JOIN recipe_translations rt ON r.recipe_id = rt.recipe_id
+        LEFT JOIN recipe_photos rp ON r.recipe_id = rp.recipe_id AND rp.photo_type = 'main'
+        LEFT JOIN photo_translations pt ON rp.photo_id = pt.photo_id AND pt.language_code = rt.language_code
+        WHERE r.is_hero = 1 AND rt.language_code = ?
+        LIMIT 1
+    ''', (lang,)).fetchone()
+
+    # 2. Get Featured recipes
+    featured_rows = db.execute('''
+        SELECT r.recipe_id, rt.name AS recipe_name,
+               ct.name AS country_name,
+               cat_t.name AS category_name
+        FROM recipes r
+        JOIN recipe_translations rt ON r.recipe_id = rt.recipe_id
+        LEFT JOIN countries c ON r.country_id = c.country_id
+        LEFT JOIN country_translations ct ON c.country_id = ct.country_id AND ct.language_code = rt.language_code
+        LEFT JOIN recipe_categories rc ON r.recipe_id = rc.recipe_id
+        LEFT JOIN categories cat ON rc.category_id = cat.category_id
+        LEFT JOIN category_translations cat_t ON cat.category_id = cat_t.category_id AND cat_t.language_code = rt.language_code
+        WHERE r.is_featured = 1 AND rt.language_code = ?
+        ORDER BY r.recipe_id ASC
+    ''', (lang,)).fetchall()
+
+    db.close()
+
+    return jsonify({
+        'hero': dict(hero_row) if hero_row else None,
+        'featured': [dict(row) for row in featured_rows]
+    })
 # -------------------------------------------------------------
 # 3. Start Server
 # -------------------------------------------------------------

@@ -26,7 +26,8 @@ function changeLanguage(lang, isAuto = false) {
     }
 
     localStorage.setItem("preferred_lang", lang);
-    loadHomepageRecipes(lang);
+    //deleted on 2026.11.4
+    //loadHomepageRecipes(lang);
 
     const title = document.getElementById("mainTitle");
 
@@ -80,17 +81,10 @@ function changeLanguage(lang, isAuto = false) {
     } else if (lang === "zh") {
         welcome.textContent = "欢迎来到我的世界食谱档案！";
     }
-    // Translate the Featured Hero Caption
-    const heroCaption = document.getElementById("heroCaption");
-    if (heroCaption) {
-        if (lang === "en") {
-            heroCaption.textContent = "✨ Featured Recipe: Classic Italian Tiramisu";
-        } else if (lang === "fr") {
-            heroCaption.textContent = "✨ Recette en vedette : Tiramisu traditionnel italien";
-        } else if (lang === "zh") {
-            heroCaption.textContent = "✨ 今日精选推荐：经典意式提拉米苏";
-        }
-    }
+
+    // Load Hero recipe and featured recipes
+    loadFeaturedData(lang);
+
     const recipesHeading = document.getElementById("recipesHeading");
 
     if (lang === "en") {
@@ -192,8 +186,17 @@ function changeLanguage(lang, isAuto = false) {
         countryColumn.textContent = "国家";
         categoryColumn.textContent = "类别";
     }
-
-
+    // Translate view all button
+    const btnViewAllText = document.getElementById("btnViewAllText");
+    if (btnViewAllText) {
+        if (lang === "en") {
+            btnViewAllText.textContent = "View All Recipes";
+        } else if (lang === "fr") {
+            btnViewAllText.textContent = "Voir toutes les recettes";
+        } else if (lang === "zh") {
+            btnViewAllText.textContent = "浏览全部食谱";
+        }
+    }
     // Translate Recipe Video heading
     const videoHeading = document.getElementById("videoHeading");
 
@@ -286,7 +289,7 @@ function changeLanguage(lang, isAuto = false) {
 //load video 
 function loadVideo() {
     const container = document.getElementById("videoContainer");
-    
+
     // Get the language currently selected by the website user (like 'en', 'fr', 'zh')
     const lang = currentLanguage || "en";
     // Append the &hl=${lang} parameter to forcibly set the display language of YouTube's internal interface!
@@ -320,8 +323,8 @@ async function loadHomepageRecipes(lang) {
             "China": "🇨🇳", "Chine": "🇨🇳", "中国": "🇨🇳",
             "United States": "🇺🇸", "États-Unis": "🇺🇸", "美国": "🇺🇸",
             "Japan": "🇯🇵", "Japon": "🇯🇵", "日本": "🇯🇵",
-            "Canada": "🇨🇦","Canada": "🇨🇦","加拿大": "🇨🇦",
-            "International": "🌍","国际": "🌍","国际 / 经典": "🌍"
+            "Canada": "🇨🇦", "Canada": "🇨🇦", "加拿大": "🇨🇦",
+            "International": "🌍", "国际": "🌍", "国际 / 经典": "🌍"
         };
         // Add dynamic rows from SQLite
         recipes.forEach(recipe => {
@@ -346,10 +349,86 @@ async function loadHomepageRecipes(lang) {
         console.error("Error loading recipes from database:", err);
     }
 }
+// Get Hero recipe and Featured recipes from SQLite 2026/11/04
+async function loadFeaturedData(lang) {
+    try {
+        const response = await fetch(`/api/featured?lang=${lang}`);
+        const data = await response.json();
+
+        // 1. Hero recipe
+        const heroContainer = document.getElementById("heroContainer");
+        if (heroContainer) {
+            if (data.hero) {
+                const imgPath = data.hero.file_path || "images/dessert.jpg";
+                const recipeName = data.hero.name || "";
+
+                // Prefix
+                const heroPrefix = {
+                    en: "🔥 Trending Recipe : ",
+                    fr: "🔥 Recette tendance : ",
+                    zh: "🔥 本周人气之选 ： "
+                }[lang] || "🔥 Trending Recipe : ";
+
+                heroContainer.innerHTML = `
+                    <a href="recipe.html?id=${data.hero.recipe_id}" class="hero-link">
+                        <img width="480" height="320" src="${imgPath}" alt="${recipeName}">
+                        <p class="hero-caption" id="heroCaption">${heroPrefix}${recipeName}</p>
+                    </a>
+                `;
+            } else {
+                heroContainer.innerHTML = "";
+            }
+        }
+
+        // 2. Featured recipes
+        const COUNTRY_FLAGS = {
+            "Italy": "🇮🇹", "Italie": "🇮🇹", "意大利": "🇮🇹",
+            "France": "🇫🇷", "France": "🇫🇷", "法国": "🇫🇷",
+            "China": "🇨🇳", "Chine": "🇨🇳", "中国": "🇨🇳",
+            "United States": "🇺🇸", "États-Unis": "🇺🇸", "美国": "🇺🇸",
+            "Japan": "🇯🇵", "Japon": "🇯🇵", "日本": "🇯🇵",
+            "Canada": "🇨🇦", "Canada": "🇨🇦", "加拿大": "🇨🇦",
+            "International": "🌍", "国际": "🌍", "国际 / 经典": "🌍"
+        };
+        const tbody = document.getElementById("featuredTableBody");
+        if (tbody) {
+            tbody.innerHTML = "";
+            if (data.featured && data.featured.length > 0) {
+                data.featured.forEach(recipe => {
+                    const row = document.createElement("tr");
+
+                    // Recipe name
+                    const tdName = document.createElement("td");
+                    tdName.innerHTML = `<a href="recipe.html?id=${recipe.recipe_id}" class="recipe-name-link">${recipe.recipe_name}</a>`;
+
+                    // Country with icon
+                    const tdCountry = document.createElement("td");
+                    const countryName = recipe.country_name || "—";
+                    const flag = COUNTRY_FLAGS[countryName] || "🌍";
+                    tdCountry.innerHTML = `<span class="badge badge-country">${flag} ${countryName}</span>`;
+
+                    // Category with icon
+                    const tdCategory = document.createElement("td");
+                    const categoryName = recipe.category_name || "—";
+                    tdCategory.innerHTML = `<span class="badge badge-category">${categoryName}</span>`;
+
+                    row.appendChild(tdName);
+                    row.appendChild(tdCountry);
+                    row.appendChild(tdCategory);
+                    tbody.appendChild(row);
+                });
+            }
+        }
+    } catch (err) {
+        console.error("Loading featured recipes error:", err);
+    }
+}
+
 // 1. Get the language the user chose before (or default to 'en')
 const initialLanguage = localStorage.getItem("preferred_lang") || "en";
 // Start the page in THAT language
 changeLanguage(initialLanguage, true);
+loadFeaturedData(currentLanguage);
 
 
 

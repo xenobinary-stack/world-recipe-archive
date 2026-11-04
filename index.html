@@ -36,16 +36,8 @@
 		<h1 id="mainTitle">My World Recipe Archive</h1>
 		<p id="welcomeText">Welcome to my personal collection of recipes from around the world.</p>
 		<!-- NEW: Featured Recipe Card -->
-		<div class="featured-hero">
-			<a href="recipe.html?id=2">
-				<img width="480" height="320" src="../images/recipes/tiramisu/tiramisu_main.jpg"
-					alt="Featured Recipe: Tiramisu">
-				<p class="hero-caption" id="heroCaption">✨ Featured Recipe: Classic Italian Tiramisu</p>
-			</a>
-			<!-- <a href="recipe.html?id=3">
-        <img width="600" height="320" src="images/recipes/baguette/baguette_main.jpg" alt="Featured Recipe: Baguette">
-        <p class="hero-caption" id="heroCaption">✨ Featured Recipe: Classic French Baguette</p>
-    </a> -->
+		<div class="featured-hero" id="heroContainer">
+			<!-- JS will insert the image and title dynamically  -->
 		</div>
 		<!-- Featured Table -->
 		<section class="section-featured">
@@ -59,19 +51,17 @@
 							<th id="categoryColumn">Category</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td><a href="recipe.html?id=1" class="recipe-name-link">Pizza Margherita</a></td>
-							<td><span class="badge badge-country">🇮🇹 Italy</span></td>
-							<td><span class="badge badge-category">Main Dish</span></td>
-						</tr>
-						<tr>
-							<td><a href="recipe.html?id=2" class="recipe-name-link">Tiramisu</a></td>
-							<td><span class="badge badge-country">🇮🇹 Italy</span></td>
-							<td><span class="badge badge-category">Dessert</span></td>
-						</tr>
+					<tbody id="featuredTableBody">
+						<!-- JS will create list dynamically according to the data in database <tr> -->
 					</tbody>
 				</table>
+			</div>
+			<div class="view-all-container">
+				<a href="recipes.html" class="btn-view-all" id="btnViewAll">
+					<span>📖</span>
+					<span id="btnViewAllText">View All Recipes</span>
+					<span class="arrow">→</span>
+				</a>
 			</div>
 		</section>
 		<section class="categories-section">
