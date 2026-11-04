@@ -95,28 +95,28 @@ async function loadRecipeDetails(recipeId, lang) {
         // Section label translations
         const sectionLabels = {
             en: {
-                ingredients: "Ingredients",
+                ingredients: "🥣 Ingredients",
                 dough: "🍞 Dough",
                 crust: "🥧 Crust",
                 filling: "🍎 Filling",
                 topping: "✨ Topping",
-                cake: "Cake"
+                cake: "🍰 Cake"
             },
             fr: {
-                ingredients: "Ingrédients",
+                ingredients: "🥣 Ingrédients",
                 dough: "🍞 Pâte à pain",
                 crust: "🥧 Pâte brisée",
                 filling: "🍎 Garniture",
                 topping: "✨ Finition",
-                cake: "Gâteau"
+                cake: "🍰 Gâteau"
             },
             zh: {
-                ingredients: "食材",
+                ingredients: "🥣 食材",
                 dough: "🍞 面团",
                 crust: "🥧 饼皮",
                 filling: "🍎 馅料",
                 topping: "✨ 表面装饰",
-                cake: "蛋糕"
+                cake: "🍰 蛋糕"
             }
         };
 
