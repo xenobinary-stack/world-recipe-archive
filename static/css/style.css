@@ -665,6 +665,21 @@ hr {
     min-width: 170px;
 }
 
+/* Change the mouse to a clickable hand in the image area */
+.recipe-card-image {
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+}
+/* When the mouse hovers over the image, slightly enlarge it to indicate it can be clicked */
+.recipe-card-image:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+/* When the mouse hovers over the whole card, the button automatically changes color, creating a response effect */
+.recipe-card:hover .btn-primary {
+    background-color: #e67e22; /* Button turns warm orange when hovered */
+}
 
 /* -----------------------------
    Recipe grid

@@ -542,120 +542,47 @@ function displayRecipes() {
             "images/placeholder.jpg";
 
 
-        const image =
-            document.createElement("img");
-
+// 图片做成可点击的 <a> 链接！
+        const imageLink = document.createElement("a");
+        imageLink.href = `recipe.html?id=${recipe.recipe_id}`;
+        imageLink.className = "recipe-card-image";
+        const image = document.createElement("img");
         image.src = imagePath;
-
-        image.alt =
-            recipe.recipe_name || "Recipe";
-
-
+        image.alt = recipe.recipe_name || "Recipe";
         image.onerror = function() {
             this.src = "images/placeholder.jpg";
         };
-
-
-        // Image area
-        const imageContainer =
-            document.createElement("div");
-
-        imageContainer.className =
-            "recipe-card-image";
-
-        imageContainer.appendChild(image);
-
-
-        // Content area
-        const content =
-            document.createElement("div");
-
-        content.className =
-            "recipe-card-content";
-
-
-        // Recipe name
-        const title =
-            document.createElement("h2");
-
-        title.textContent =
-            recipe.recipe_name || "—";
-
-
+        imageLink.appendChild(image);
+        const content = document.createElement("div");
+        content.className = "recipe-card-content";
+        const title = document.createElement("h2");
+        title.textContent = recipe.recipe_name || "—";
         // Time information
-        const meta =
-            document.createElement("div");
-
-        meta.className =
-            "recipe-card-meta";
-
-
-        const prep =
-            document.createElement("span");
-
-        prep.textContent =
-            `${pageText[currentLanguage].prep}: ${
-                recipe.prep_time ?? "—"
-            } min`;
-
-
-        const cook =
-            document.createElement("span");
-
-        cook.textContent =
-            `${pageText[currentLanguage].cook}: ${
-                recipe.cook_time ?? "—"
-            } min`;
-
-
+        const meta = document.createElement("div");
+        meta.className = "recipe-card-meta";
+        const prep = document.createElement("span");
+        prep.textContent = `${pageText[currentLanguage].prep}: ${recipe.prep_time ?? "—"} min`;
+        const cook = document.createElement("span");
+        cook.textContent = `${pageText[currentLanguage].cook}: ${recipe.cook_time ?? "—"} min`;
         meta.appendChild(prep);
         meta.appendChild(cook);
-
-
         // Country and category
-        const location =
-            document.createElement("p");
-
-        location.textContent =
-            `${recipe.country_name || "—"} · ${
-                recipe.category_name || "—"
-            }`;
-
-
+        const location = document.createElement("p");
+        location.textContent = `${recipe.country_name || "—"} · ${recipe.category_name || "—"}`;
         // Difficulty
-        const difficulty =
-            document.createElement("p");
-
-        difficulty.textContent =
-            translateDifficulty(
-                recipe.difficulty || "—"
-            );
-
-
-        // View Recipe button
-        const viewButton =
-            document.createElement("a");
-
-        viewButton.className =
-            "btn-primary";
-
-        viewButton.href =
-            `recipe.html?id=${recipe.recipe_id}`;
-
-        viewButton.textContent =
-            pageText[currentLanguage].viewRecipe;
-
-
+        const difficulty = document.createElement("p");
+        difficulty.textContent = translateDifficulty(recipe.difficulty || "—");
+        const viewButton = document.createElement("a");
+        viewButton.className = "btn-primary";
+        viewButton.href = `recipe.html?id=${recipe.recipe_id}`;
+        viewButton.textContent = pageText[currentLanguage].viewRecipe;
         content.appendChild(title);
         content.appendChild(meta);
         content.appendChild(location);
         content.appendChild(difficulty);
         content.appendChild(viewButton);
-
-
-        card.appendChild(imageContainer);
+        card.appendChild(imageLink);
         card.appendChild(content);
-
         grid.appendChild(card);
     });
 }
