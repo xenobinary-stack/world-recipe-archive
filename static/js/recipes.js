@@ -98,14 +98,14 @@ const categoryNames = {
     en: {
         dessert: "Dessert",
         main_dish: "Main Dish",
-        bread: "Bread",
+        bread: "Breads & Buns",
         soup: "Soup"
     },
 
     fr: {
         dessert: "Dessert",
         main_dish: "Plat principal",
-        bread: "Pain",
+        bread: "Pains & Brioc",
         soup: "Soupe"
     },
 
