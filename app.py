@@ -351,6 +351,133 @@ def get_featured_recipes():
         'hero': dict(hero_row) if hero_row else None,
         'featured': [dict(row) for row in featured_rows]
     })
+
+
+# -------------------------------------------------------------
+# Admin: Hero Recipe Management
+# -------------------------------------------------------------
+
+# Get all recipes and identify the current Hero Recipe
+@app.route('/api/admin/hero-recipes', methods=['GET'])
+def get_admin_hero_recipes():
+
+    if 'admin_id' not in session:
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    lang = request.args.get('lang', 'en')
+
+    if lang not in ['en', 'fr', 'zh']:
+        lang = 'en'
+
+    db = get_db()
+
+    try:
+        rows = db.execute("""
+            SELECT
+                r.recipe_id,
+                rt.name AS recipe_name,
+                rp.file_path AS photo_path,
+                r.is_hero
+            FROM recipes r
+
+            LEFT JOIN recipe_translations rt
+                ON r.recipe_id = rt.recipe_id
+                AND rt.language_code = ?
+
+            LEFT JOIN recipe_photos rp
+                ON r.recipe_id = rp.recipe_id
+                AND rp.photo_type = 'main'
+                AND rp.display_order = 1
+
+            ORDER BY rt.name COLLATE NOCASE ASC
+        """, (lang,)).fetchall()
+
+        return jsonify([dict(row) for row in rows])
+
+    except sqlite3.Error as e:
+        print(f"Hero Recipe Query Error: {e}")
+        return jsonify({'error': 'Unable to load recipes.'}), 500
+
+    finally:
+        db.close()
+
+
+# Save selected Hero Recipe
+@app.route('/api/admin/hero-recipes', methods=['POST'])
+def save_admin_hero_recipe():
+
+    if 'admin_id' not in session:
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    data = request.get_json(silent=True)
+
+    if not data:
+        return jsonify({
+            'success': False,
+            'message': 'Invalid JSON format.'
+        }), 400
+
+    try:
+        recipe_id = int(data.get('recipe_id'))
+    except (TypeError, ValueError):
+        return jsonify({
+            'success': False,
+            'message': 'Invalid recipe ID.'
+        }), 400
+
+    db = get_db()
+
+    try:
+        # Start an immediate transaction to avoid conflicting updates.
+        db.execute('BEGIN IMMEDIATE')
+
+        # Check whether the selected recipe exists.
+        recipe = db.execute("""
+            SELECT recipe_id
+            FROM recipes
+            WHERE recipe_id = ?
+        """, (recipe_id,)).fetchone()
+
+        if not recipe:
+            db.rollback()
+            return jsonify({
+                'success': False,
+                'message': 'Recipe not found.'
+            }), 404
+
+        # Clear the current Hero Recipe.
+        db.execute("""
+            UPDATE recipes
+            SET is_hero = 0
+        """)
+
+        # Set the selected recipe as the only Hero Recipe.
+        db.execute("""
+            UPDATE recipes
+            SET is_hero = 1
+            WHERE recipe_id = ?
+        """, (recipe_id,))
+
+        db.commit()
+
+        return jsonify({
+            'success': True,
+            'message': 'Hero Recipe updated successfully.',
+            'recipe_id': recipe_id
+        }), 200
+
+    except sqlite3.Error as e:
+        db.rollback()
+        print(f"Hero Recipe Update Error: {e}")
+
+        return jsonify({
+            'success': False,
+            'message': 'Unable to update Hero Recipe.'
+        }), 500
+
+    finally:
+        db.close()
+
 # -------------------------------------------------------------
 # 3. Start Server
 # -------------------------------------------------------------
