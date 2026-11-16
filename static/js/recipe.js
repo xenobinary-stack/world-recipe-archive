@@ -103,7 +103,8 @@ async function loadRecipeDetails(recipeId, lang) {
                 cake: "🍰 Cake",
                 marinade: "🥣 Marinade",
                 coating: "🌾 Coating",
-                assembly: "🍔 Assembly"
+                assembly: "🍔 Assembly",
+                stir_fry: "🍳 Stir Fry"
             },
             fr: {
                 ingredients: "🥕 Ingrédients",
@@ -114,8 +115,8 @@ async function loadRecipeDetails(recipeId, lang) {
                 cake: "🍰 Gâteau",                
                 marinade: "🥣 Marinade",
                 coating: "🌾 Enrobage",
-                assembly: "🍔 Assemblage"
-                
+                assembly: "🍔 Assemblage",
+                stir_fry: "🍳 Faire Sauter"
             },
             zh: {
                 ingredients: "🥕 食材",
@@ -126,7 +127,8 @@ async function loadRecipeDetails(recipeId, lang) {
                 cake: "🍰 蛋糕",                
                 marinade: "🥣 腌料",
                 coating: "🌾 裹粉",
-                assembly: "🍔 组装"
+                assembly: "🍔 组装",
+                stir_fry: "🍳 炒菜"
             }
         };
 
