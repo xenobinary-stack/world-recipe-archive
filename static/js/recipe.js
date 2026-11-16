@@ -104,7 +104,8 @@ async function loadRecipeDetails(recipeId, lang) {
                 marinade: "🥣 Marinade",
                 coating: "🌾 Coating",
                 assembly: "🍔 Assembly",
-                stir_fry: "🍳 Stir Fry"
+                stir_fry: "🍳 Stir Fry",
+                flavor_option: "🍎 Flavor Option"
             },
             fr: {
                 ingredients: "🥕 Ingrédients",
@@ -116,7 +117,8 @@ async function loadRecipeDetails(recipeId, lang) {
                 marinade: "🥣 Marinade",
                 coating: "🌾 Enrobage",
                 assembly: "🍔 Assemblage",
-                stir_fry: "🍳 Faire Sauter"
+                stir_fry: "🍳 Faire Sauter",
+                flavor_option: "🍎 Option de saveur"
             },
             zh: {
                 ingredients: "🥕 食材",
@@ -128,7 +130,8 @@ async function loadRecipeDetails(recipeId, lang) {
                 marinade: "🥣 腌料",
                 coating: "🌾 裹粉",
                 assembly: "🍔 组装",
-                stir_fry: "🍳 炒菜"
+                stir_fry: "🍳 炒菜",
+                flavor_option: "🍎 可选口味"
             }
         };
 

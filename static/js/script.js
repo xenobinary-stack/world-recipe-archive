@@ -324,6 +324,7 @@ async function loadHomepageRecipes(lang) {
             "United States": "🇺🇸", "États-Unis": "🇺🇸", "美国": "🇺🇸",
             "Japan": "🇯🇵", "Japon": "🇯🇵", "日本": "🇯🇵",
             "Canada": "🇨🇦", "Canada": "🇨🇦", "加拿大": "🇨🇦",
+            "Spain": "🇪🇸", "Espagne": "🇪🇸", "西班牙": "🇪🇸",            
             "International": "🌍", "国际": "🌍", "国际 / 经典": "🌍"
         };
         // Add dynamic rows from SQLite
@@ -388,6 +389,7 @@ async function loadFeaturedData(lang) {
             "United States": "🇺🇸", "États-Unis": "🇺🇸", "美国": "🇺🇸",
             "Japan": "🇯🇵", "Japon": "🇯🇵", "日本": "🇯🇵",
             "Canada": "🇨🇦", "Canada": "🇨🇦", "加拿大": "🇨🇦",
+            "Spain": "🇪🇸", "Espagne": "🇪🇸", "西班牙": "🇪🇸",    
             "International": "🌍", "国际": "🌍", "国际 / 经典": "🌍"
         };
         const tbody = document.getElementById("featuredTableBody");
