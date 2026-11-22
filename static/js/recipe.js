@@ -105,7 +105,8 @@ async function loadRecipeDetails(recipeId, lang) {
                 coating: "🌾 Coating",
                 assembly: "🍔 Assembly",
                 stir_fry: "🍳 Stir Fry",
-                flavor_option: "🍎 Flavor Option"
+                flavor_option: "🍎 Flavor Option",
+                poolish: "🍎 Poolish",
             },
             fr: {
                 ingredients: "🥕 Ingrédients",
@@ -118,7 +119,8 @@ async function loadRecipeDetails(recipeId, lang) {
                 coating: "🌾 Enrobage",
                 assembly: "🍔 Assemblage",
                 stir_fry: "🍳 Faire Sauter",
-                flavor_option: "🍎 Option de saveur"
+                flavor_option: "🍎 Option de saveur",
+                poolish: "🍎 Poolish",
             },
             zh: {
                 ingredients: "🥕 食材",
@@ -131,7 +133,8 @@ async function loadRecipeDetails(recipeId, lang) {
                 coating: "🌾 裹粉",
                 assembly: "🍔 组装",
                 stir_fry: "🍳 炒菜",
-                flavor_option: "🍎 可选口味"
+                flavor_option: "🍎 可选口味",
+                poolish: "🍎 波兰种",
             }
         };
 
